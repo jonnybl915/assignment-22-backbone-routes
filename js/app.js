@@ -3,10 +3,12 @@ var categoryListings = [
    {catName: "Nonfiction" ,   subcatList: ['Biography', 'Business', 'Education', 'Health', 'Philosophy', 'Self-Help'] },
    {catName: "Miscellaneous" ,   subcatList: ['Cooking','Crafts','Espanol', 'Medicine'] },
 ]
-
+//Three routes:
+//ROUTE ===== FETCH ===== RENDER //
+//1. Home, 2.Books-main, 3. Books
 var appContainer = document.querySelector("#app-container");
 
-var bookModel = Backbone.Model.extend({
+var BookCollection = Backbone.Collection.extend({
   url: "",
   initialize: function(inputValue){
     this.url = "https://www.googleapis.com/books/v1/volumes?q=subject:" + inputValue;
@@ -15,8 +17,15 @@ var bookModel = Backbone.Model.extend({
 
 var AppRouter = Backbone.Router.extend({
   routes: {
-    "show-books/:bookName": 'showBooks',
-    '': "showHomePage"
+    "show-books/:generalCategory": 'showBooks',
+    '': "HomePage"
   },
 
+  showBooks: function(categoryName){
+    var bookCollectonInstance = new BookCollection(categoryName);
+    bookCollectonInstance.fetch().then(function(){
+      console.log(bookCollectonInstance);
+    })
+  },
   
+});
