@@ -6,18 +6,22 @@ var categoryListings = [
 //Three routes:
 //ROUTE ===== FETCH ===== RENDER //
 //1. Home, 2.Books-main, 3. Books
-var appContainer = document.querySelector("#app-container");
+//console.log(Backbone);
+//=================
+// Query Selectors
+//=================
+var contentArea = document.querySelector(".content-area")
 
 var BookCollection = Backbone.Collection.extend({
   url: "",
-  initialize: function(inputValue){
-    this.url = "https://www.googleapis.com/books/v1/volumes?q=subject:" + inputValue;
+  initialize: function(categoryName){
+    this.url = "https://www.googleapis.com/books/v1/volumes?q=subject:" + categoryName;
   }
 })
 
 var AppRouter = Backbone.Router.extend({
   routes: {
-    "show-books/:generalCategory": 'showBooks',
+    "books/:categoryName": 'showBooks',
     '': "HomePage"
   },
 
@@ -27,5 +31,20 @@ var AppRouter = Backbone.Router.extend({
       console.log(bookCollectonInstance);
     })
   },
-  
+
+  HomePage: function(){
+    console.log("hello there");
+    contentArea.innerHTML += "<a href=''>" + "Fiction" + "</a>";
+    contentArea.innerHTML += "<h1>HELLO000000</h1>"
+
+
+   }
 });
+
+window.addEventListener('load', function(){
+
+  var appRouter = new AppRouter();
+
+  Backbone.history.start();
+  //keeps a log so as to go to previous hash on backspace
+})
