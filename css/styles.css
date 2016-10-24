@@ -367,6 +367,9 @@ textarea {
 * {
   box-sizing: border-box; }
 
+.umbrella-category {
+  font-size: 30px; }
+
 img {
   width: 100%;
   display: block; }

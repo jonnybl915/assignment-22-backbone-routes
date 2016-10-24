@@ -34,8 +34,13 @@ var AppRouter = Backbone.Router.extend({
 
   HomePage: function(){
     console.log("hello there");
-    contentArea.innerHTML += "<a href=''>" + "Fiction" + "</a>";
-    contentArea.innerHTML += "<h1>HELLO000000</h1>"
+    //perfom loops to insert row info dynamically;
+    for (var i = 0; i < categoryListings.length; i++) {
+      categoryListings[i]
+    }
+    contentArea.innerHTML += "<th> <a class='umbrella-category' href=''>" + "Fiction" + "</a> </th>";
+    contentArea.innerHTML += "<th> <a class='umbrella-category' href=''>" + "Mystery" + "</a> </th>"
+    contentArea.innerHTML += "<th> <a class='umbrella-category' href=''>" + "Nonfiction" + "</a> </th>"
 
 
    }
