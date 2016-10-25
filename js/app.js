@@ -25,10 +25,16 @@ var BookCollection = Backbone.Collection.extend({
     }
 })
 
+var BookModel = Backbone.Model.extend({
+
+})
+
+
 var AppRouter = Backbone.Router.extend({
     routes: {
         "books/:categoryName": 'showBooks',
-        '': "HomePage"
+        '': "HomePage",
+        "books/bookName": 'showBook'
     },
 
     showBooks: function(categoryName) {
@@ -38,31 +44,41 @@ var AppRouter = Backbone.Router.extend({
         })
     },
 
+    showBook: function(bookName) {
+      var bookModelInstance = new BookModel(bookName);
+      bookModelInstance.fetch().then(function(){
+        console.log(bookModelInstance);
+      })
+    },
 
     HomePage: function() {
 
         for (var i = 0; i < categoryListings.length; i++) {
-            var bigCategory = categoryListings[i].catName;
+
+            var umbrellaCategory = categoryListings[i].catName;
             console.log(categoryListings[i]);
-            contentArea.innerHTML += "<th> <a class='umbrella-category' href=''>" + bigCategory + "</a> </th> ";
+            contentArea.innerHTML += "<th> <a class='umbrella-category' href=''>" + umbrellaCategory + "</a> </th> ";
             var subCategoryArray = categoryListings[i].subcatList;
             console.log(subCategoryArray);
-        }
-            // for (var i = 0; i < subCategoryArray.length; i++) {
-            //     var subCategory = subCategoryArray[i];
-            //     console.log(subCategory);
-            //     contentArea.innerHTML += "<ul>";
-            //     contentArea.innerHTML += "<li class='sub-category'> <a href=''>" + subCategory + "</a> </tr>";
-            // }
-            // contentArea.innerHTML += "</ul>";
+
+            for (var i = 0; i < subCategoryArray.length; i++) {
+                var subCategory = subCategoryArray[i];
+                contentArea.innerHTML += "<ul>";
+                contentArea.innerHTML += "<li class='sub-category'> <a href=''>" + subCategory + "</a> </tr>";
+                contentArea.innerHTML += "</ul>";
+
+            }
+
         }
     }
 });
 
+
+
 window.addEventListener('load', function() {
 
     var appRouter = new AppRouter();
-
+    console.log("Backbone ROUTING");
     Backbone.history.start();
     //keeps a log so as to go to previous hash on backspace
 })
