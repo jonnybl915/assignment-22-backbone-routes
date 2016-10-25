@@ -18,16 +18,28 @@ var categoryListings = [{
 //=================
 var contentArea = document.querySelector(".content-area")
 
+var BookModel = Backbone.Model.extend({
+    parse: function(parsedResponse) {
+    return parsedResponse.volumeInfo;
+      console.log("parsing volume Info: ", parsedResponse.volumeInfo);
+    },
+})
+
 var BookCollection = Backbone.Collection.extend({
+    //== parse fires IMMEDIATELY after fetch call ==//
+    model: BookModel,
+
+    parse: function(serverResponse) {
+    console.log("parsing the response: ", serverResponse);
+    return serverResponse.items;
+  },
     url: "",
     initialize: function(categoryName) {
         this.url = "https://www.googleapis.com/books/v1/volumes?q=subject:" + categoryName;
     }
 })
 
-var BookModel = Backbone.Model.extend({
 
-})
 
 
 var AppRouter = Backbone.Router.extend({
@@ -39,24 +51,19 @@ var AppRouter = Backbone.Router.extend({
 
     showBooks: function(categoryName) {
         var bookCollectonInstance = new BookCollection(categoryName);
-        bookCollectonInstance.fetch().then(function(serverResponse) {
-            console.log(bookCollectonInstance);
-            console.log(serverResponse);
-            bookCollectonInstance.models.forEach(function(bbModl, i){
-            console.log("BACKBONE MODELS", bbModl);
-            var grabberArray = bbModl.get('items');
+        bookCollectonInstance.fetch().then(function(serverRes) {
+            console.log("Parsed COLLECTION INSTANCE: ", bookCollectonInstance);
             contentArea.innerHTML += '<h2>' + categoryName.toUpperCase() + '</h2>';
-            for (var i = 0; i < grabberArray.length; i++) {
-              var smallThumbnailImageSrc = grabberArray[i].volumeInfo.imageLinks.smallThumbnail;
-              var bookTitle = grabberArray[i].volumeInfo.title;
-              console.log("Book Title: ", bookTitle);
-              //=======DIV NOT SHOWING UP=============// 
-              contentArea.innerHTML += '<div class="bookCard">'
-              contentArea.innerHTML +=      '<img src="' + smallThumbnailImageSrc + '"/>';
-              contentArea.innerHTML +=      '<p>' + bookTitle + '</p>';
-              contentArea.innerHTML += '</div>'
+            bookCollectonInstance.models.forEach(function(bbModl, i){
 
-            }
+            var titles = bbModl.get("title");
+            var imageSrc = bbModl.get("imageLinks").smallThumbnail;
+              contentArea.innerHTML += '<div class="bookCard col-1-4">'
+              contentArea.innerHTML +=      '<img src="' + imageSrc + '"/>';
+              contentArea.innerHTML +=      '<p>' + titles + '</p>' + '</div>';
+              contentArea.innerHTML += ""
+            console.log("IMAGE SOURCES: ", imageSrc);
+            
 
         })
       })

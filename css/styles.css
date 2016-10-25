@@ -364,17 +364,39 @@ textarea {
   font: inherit;
   /* 2 */ }
 
-* {
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box; }
+
+.col-1-4 {
+  display: flex;
+  width: 25%; }
+
+[class*='col-'] {
+  padding-right: 20px; }
+
+[class*='col-']:last-of-type {
+  padding-right: 0; }
+
+.grid:after {
+  content: "";
+  display: table;
+  clear: both; }
 
 .umbrella-category {
   font-size: 30px; }
 
 .book-card {
-  display: inline-block; }
+  display: inline-flex; }
 
 body {
   font-family: 'Abhaya Libre', 'Palatino', serif; }
+
+.grid {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap; }
 
 .sub-category {
   font-size: 15px; }
