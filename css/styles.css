@@ -371,7 +371,7 @@ textarea {
   font-size: 30px; }
 
 .card {
-  display: inline-block; }
+  display: inline-flex; }
 
 body {
   font-family: 'Abhaya Libre', 'Palatino', serif; }

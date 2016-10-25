@@ -49,7 +49,7 @@ var AppRouter = Backbone.Router.extend({
               var smallThumbnailImageSrc = imageGrabberArray[i].volumeInfo.imageLinks.smallThumbnail;
               console.log("IMAGES: ", smallThumbnailImageSrc);
               contentArea.innerHTML += '<div class="card">'
-              contentArea.innerHTML += '<li class="thumbnail-image"> <img src="' + smallThumbnailImageSrc + '"/> </li>';
+              contentArea.innerHTML += '<img src="' + smallThumbnailImageSrc + '"/>';
               contentArea.innerHTML += '</div>'
             }
 
