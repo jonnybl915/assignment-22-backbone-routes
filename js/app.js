@@ -59,16 +59,11 @@ var AppRouter = Backbone.Router.extend({
 
                 var titles = bbModl.get("title");
                 var imageSrc = bbModl.get("imageLinks").smallThumbnail;
-                console.log("TITLES: ", titles);
-                console.log("IMAGE SOURCES",imageSrc);
+                builderString += '<div class="book-card">'
                 builderString += '<img alt="noIMG" src="' + imageSrc + '"/>';
                 builderString += '<p>' + titles + '</p>';
-                // console.log("BBMODEL: ", bbModl);
-                // builderString += '<img alt="noIMG" src="' + imageSrc + '"/>';
-                // builderString += '<p>' + titles + '</p>';
-                // builderString += "</div>"
-                // console.log("IMAGE SOURCES: ", imageSrc);
-                //
+                builderString += '</div>';
+
                 contentArea.innerHTML += builderString;
             })
         })

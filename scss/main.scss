@@ -14,24 +14,14 @@ $site-beige: #E6DECE;
    }
 }
 
-// *{ box-sizing: border-box }
-*, *:after, *:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+*{ box-sizing: border-box }
+
 .col-1-4 {
   display: flex;
   width: 25%;
+  display: block;
+  margin: 0 auto;
 }
-
-[class*='col-'] {
-  padding-right: 20px;
-}
-[class*='col-']:last-of-type {
-  padding-right: 0;
-}
-
 .umbrella-category {
   font-size: 30px;
   align-content: center;
@@ -43,15 +33,20 @@ $site-beige: #E6DECE;
   padding-bottom: -5px;
 }
 .row {
-  // align-items: center;
+   align-items: center;
 }
 .category-list {
   display: inline-table;
   width: 33.33%;
   margin-top: 0;
 }
+.content-area {
+  padding-top: 10px;
+}
 .book-card {
-  display: inline-flex;
+  width: 25%;
+  display: inline-block;
+  text-align: justify;
 }
 body{
    font-family: 'Abhaya Libre', 'Palatino', serif;
