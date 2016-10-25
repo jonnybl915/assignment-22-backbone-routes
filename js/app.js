@@ -87,14 +87,14 @@ var AppRouter = Backbone.Router.extend({
 
             var umbrellaCategory = categoryListings[i].catName;
             builderString += "<div class='category-list'>"
-            builderString += "<th> <a class='umbrella-category' href=''>" + umbrellaCategory + "</a> </th> ";
+            builderString += "<p> <a class='umbrella-category' href=''>" + umbrellaCategory + "</a> </p> ";
 
             var subCategoryArray = categoryListings[i].subcatList;
             console.log("subCategoryArray: ", subCategoryArray.length);
 
             for (var x = 0; x < subCategoryArray.length; x++) {
                 var subCategory = subCategoryArray[x];
-                builderString += "<li class='sub-category'> <a href=''>" + subCategory + "</a> </li>";
+                builderString += "<p class='sub-category'> <a href=''>" + subCategory + "</a> </p>";
 
             }
             builderString += "</div>"

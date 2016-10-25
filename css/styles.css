@@ -379,27 +379,25 @@ textarea {
 [class*='col-']:last-of-type {
   padding-right: 0; }
 
-.grid:after {
-  content: "";
-  display: table;
-  clear: both; }
-
 .umbrella-category {
-  font-size: 30px; }
+  font-size: 30px;
+  align-content: center; }
+
+.sub-category {
+  font-size: 15px;
+  padding-left: 16px;
+  padding-bottom: -5px; }
+
+.category-list {
+  display: inline-table;
+  width: 33.33%;
+  margin-top: 0; }
 
 .book-card {
   display: inline-flex; }
 
 body {
   font-family: 'Abhaya Libre', 'Palatino', serif; }
-
-.grid {
-  width: auto;
-  display: flex;
-  flex-wrap: wrap; }
-
-.sub-category {
-  font-size: 15px; }
 
 #app-container header {
   background: #1E2A43;
