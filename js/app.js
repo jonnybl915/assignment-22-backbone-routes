@@ -39,9 +39,22 @@ var AppRouter = Backbone.Router.extend({
 
     showBooks: function(categoryName) {
         var bookCollectonInstance = new BookCollection(categoryName);
-        bookCollectonInstance.fetch().then(function() {
+        bookCollectonInstance.fetch().then(function(serverResponse) {
             console.log(bookCollectonInstance);
+            console.log(serverResponse);
+            bookCollectonInstance.models.forEach(function(bbModl, i){
+            console.log("BACKBONE MODELS", bbModl);
+            var imageGrabberArray = bbModl.get('items');
+            for (var i = 0; i < imageGrabberArray.length; i++) {
+              var smallThumbnailImageSrc = imageGrabberArray[i].volumeInfo.imageLinks.smallThumbnail;
+              console.log("IMAGES: ", smallThumbnailImageSrc);
+              contentArea.innerHTML += '<div class="card">'
+              contentArea.innerHTML += '<li class="thumbnail-image"> <img src="' + smallThumbnailImageSrc + '"/> </li>';
+              contentArea.innerHTML += '</div>'
+            }
+
         })
+      })
     },
 
     showBook: function(bookName) {
@@ -68,7 +81,6 @@ var AppRouter = Backbone.Router.extend({
                 contentArea.innerHTML += "</ul>";
 
             }
-
         }
     }
 });
