@@ -47,6 +47,10 @@ $site-beige: #E6DECE;
   width: 25%;
   display: inline-block;
   text-align: justify;
+  word-wrap: normal;
+}
+.book-title {
+  text-align: -webkit-left;
 }
 body{
    font-family: 'Abhaya Libre', 'Palatino', serif;

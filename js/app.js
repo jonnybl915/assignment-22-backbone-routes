@@ -46,7 +46,8 @@ var AppRouter = Backbone.Router.extend({
     routes: {
         "books/:categoryName": 'showBooks',
         '': "HomePage",
-        "books/bookName": 'showBook'
+        "books/bookName": 'showBook',
+        "books/:categoryName/:subCategoryName": 'showBooks'
     },
 
     showBooks: function(categoryName) {
@@ -61,7 +62,7 @@ var AppRouter = Backbone.Router.extend({
                 var imageSrc = bbModl.get("imageLinks").smallThumbnail;
                 builderString += '<div class="book-card">'
                 builderString += '<img alt="noIMG" src="' + imageSrc + '"/>';
-                builderString += '<p>' + titles + '</p>';
+                builderString += '<p class="book-title">' + titles + '</p>';
                 builderString += '</div>';
 
                 contentArea.innerHTML += builderString;

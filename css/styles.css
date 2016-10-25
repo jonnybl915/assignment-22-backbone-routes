@@ -396,7 +396,11 @@ textarea {
 .book-card {
   width: 25%;
   display: inline-block;
-  text-align: justify; }
+  text-align: justify;
+  word-wrap: normal; }
+
+.book-title {
+  text-align: -webkit-left; }
 
 body {
   font-family: 'Abhaya Libre', 'Palatino', serif; }
