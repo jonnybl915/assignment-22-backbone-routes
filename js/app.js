@@ -44,13 +44,18 @@ var AppRouter = Backbone.Router.extend({
             console.log(serverResponse);
             bookCollectonInstance.models.forEach(function(bbModl, i){
             console.log("BACKBONE MODELS", bbModl);
-            var imageGrabberArray = bbModl.get('items');
-            for (var i = 0; i < imageGrabberArray.length; i++) {
-              var smallThumbnailImageSrc = imageGrabberArray[i].volumeInfo.imageLinks.smallThumbnail;
-              console.log("IMAGES: ", smallThumbnailImageSrc);
-              contentArea.innerHTML += '<div class="card">'
-              contentArea.innerHTML += '<img src="' + smallThumbnailImageSrc + '"/>';
+            var grabberArray = bbModl.get('items');
+            contentArea.innerHTML += '<h2>' + categoryName.toUpperCase() + '</h2>';
+            for (var i = 0; i < grabberArray.length; i++) {
+              var smallThumbnailImageSrc = grabberArray[i].volumeInfo.imageLinks.smallThumbnail;
+              var bookTitle = grabberArray[i].volumeInfo.title;
+              console.log("Book Title: ", bookTitle);
+              //=======DIV NOT SHOWING UP=============// 
+              contentArea.innerHTML += '<div class="bookCard">'
+              contentArea.innerHTML +=      '<img src="' + smallThumbnailImageSrc + '"/>';
+              contentArea.innerHTML +=      '<p>' + bookTitle + '</p>';
               contentArea.innerHTML += '</div>'
+
             }
 
         })
