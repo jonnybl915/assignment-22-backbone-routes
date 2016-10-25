@@ -40,22 +40,21 @@ var AppRouter = Backbone.Router.extend({
 
 
     HomePage: function() {
-        console.log("hello there");
-        //perfom loops to insert row info dynamically;
-        contentArea.innerHTML = '';
+
         for (var i = 0; i < categoryListings.length; i++) {
             var bigCategory = categoryListings[i].catName;
             console.log(categoryListings[i]);
-            contentArea.innerHTML += "<th> <a class='umbrella-category' href=''>" + bigCategory + "</a> </th>";
-            console.log(bigCategory);
+            contentArea.innerHTML += "<th> <a class='umbrella-category' href=''>" + bigCategory + "</a> </th> ";
             var subCategoryArray = categoryListings[i].subcatList;
-            for (var i = 0; i < subCategoryArray.length; i++) {
-                var subCategory = subCategoryArray[i];
-                console.log(subCategory);
-                contentArea.innerHTML += "<ul>";
-                contentArea.innerHTML += "<li class='sub-category'> <a href=''>" + subCategory + "</a> </tr>";
-            }
-            contentArea.innerHTML +="</ul>";
+            console.log(subCategoryArray);
+        }
+            // for (var i = 0; i < subCategoryArray.length; i++) {
+            //     var subCategory = subCategoryArray[i];
+            //     console.log(subCategory);
+            //     contentArea.innerHTML += "<ul>";
+            //     contentArea.innerHTML += "<li class='sub-category'> <a href=''>" + subCategory + "</a> </tr>";
+            // }
+            // contentArea.innerHTML += "</ul>";
         }
     }
 });
