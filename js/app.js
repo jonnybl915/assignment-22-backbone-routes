@@ -60,6 +60,7 @@ var AppRouter = Backbone.Router.extend({
 
                 var titles = bbModl.get("title");
                 var imageSrc = bbModl.get("imageLinks").smallThumbnail;
+
                 builderString += '<div class="book-card">'
                 builderString += '<img alt="noIMG" src="' + imageSrc + '"/>';
                 builderString += '<p class="book-title">' + titles + '</p>';
@@ -80,11 +81,12 @@ var AppRouter = Backbone.Router.extend({
     HomePage: function() {
         var builderString = "";
         for (var i = 0; i < categoryListings.length; i++) {
+            var baseURL = 'file:///Users/jonathandavidblack/TIY-Frontend-Fall-2016/assignments/22-backbone-router-and-models/index.html#books/';
 
             var umbrellaCategory = categoryListings[i].catName;
             builderString += "<div class='category-list'>"
-            builderString += "<p> <a class='umbrella-category' href=''>" + umbrellaCategory + "</a> </p> ";
-
+            //builderString += "<p> <a class='umbrella-category'" + "href="">" + umbrellaCategory + "</a> </p> ";
+            builderString += `<p> <a class=umbrella-category href='#books/${umbrellaCategory}'> ${umbrellaCategory} </a> </p>`
             var subCategoryArray = categoryListings[i].subcatList;
             console.log("subCategoryArray: ", subCategoryArray.length);
 
