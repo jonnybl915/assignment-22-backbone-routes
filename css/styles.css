@@ -375,7 +375,6 @@ textarea {
   box-sizing: border-box; }
 
 .col-1-4 {
-  display: flex;
   width: 25%;
   display: block;
   margin: 0 auto;
