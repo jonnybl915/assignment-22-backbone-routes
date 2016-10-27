@@ -395,7 +395,8 @@ textarea {
 .category-list {
   display: inline-table;
   width: 33.33%;
-  margin-top: 0; }
+  margin-top: 0;
+  border: solid grey 1px; }
 
 .content-area {
   padding-top: 10px;

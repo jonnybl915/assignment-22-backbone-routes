@@ -69,15 +69,15 @@ var AppRouter = Backbone.Router.extend({
                 contentArea.innerHTML += builderString;
 
                 sideMenu.innerHTML = "";
-                var builderString2 = "";
+                var builderString2 = "<table class='category-list'>";
 
                 for (var i = 0; i < categoryListings.length; i++) {
                     var baseURL = 'file:///Users/jonathandavidblack/TIY-Frontend-Fall-2016/assignments/22-backbone-router-and-models/index.html#books/';
 
                     var umbrellaCategory = categoryListings[i].catName;
 
-                    builderString2 += "<table class='category-list'>"
-                        //builderString += "<p> <a class='umbrella-category'" + "href="">" + umbrellaCategory + "</a> </p> ";
+
+                    //builderString += "<p> <a class='umbrella-category'" + "href="">" + umbrellaCategory + "</a> </p> ";
                     builderString2 += `<th> <a class=umbrella-category href='#books/${umbrellaCategory}'> ${umbrellaCategory} </a> </th>`
                     var subCategoryArray = categoryListings[i].subcatList;
                     //console.log("subCategoryArray: ", subCategoryArray.length);
@@ -87,9 +87,11 @@ var AppRouter = Backbone.Router.extend({
                         builderString2 += "<tr class='sub-category'> <td> <a href=''>" + subCategory + "</a><td> </tr>";
 
                     }
-                    builderString2 += "</table>"
+
                     sideMenu.innerHTML = builderString2;
             }
+            builderString2 += "</table>"
+            sideMenu.innerHTML = builderString2;
           })
         })
     },
