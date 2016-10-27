@@ -14,6 +14,15 @@ $site-beige: #E6DECE;
    }
 }
 
+.side-menu {
+    width: 25%;
+    alignment: right;
+
+}
+.container {
+  display: flex;
+
+}
 *{ box-sizing: border-box }
 
 .col-1-4 {
@@ -42,6 +51,7 @@ $site-beige: #E6DECE;
 }
 .content-area {
   padding-top: 10px;
+  width: 75%;
 }
 .book-card {
   width: 25%;
@@ -59,6 +69,7 @@ body{
 
 
 #app-container{
+
    // default site styles
    header{
       background: $site-blue;

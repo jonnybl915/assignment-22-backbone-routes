@@ -16,8 +16,8 @@ var categoryListings = [{
 //=================
 // Query Selectors
 //=================
-var contentArea = document.querySelector(".content-area")
-
+var contentArea = document.querySelector(".content-area");
+var sideMenu = document.querySelector('.side-menu');
 var BookModel = Backbone.Model.extend({
     parse: function(parsedResponse) {
         return parsedResponse.volumeInfo;
@@ -67,7 +67,30 @@ var AppRouter = Backbone.Router.extend({
                 builderString += '</div>';
 
                 contentArea.innerHTML += builderString;
-            })
+
+                sideMenu.innerHTML = "";
+                var builderString2 = "";
+
+                for (var i = 0; i < categoryListings.length; i++) {
+                    var baseURL = 'file:///Users/jonathandavidblack/TIY-Frontend-Fall-2016/assignments/22-backbone-router-and-models/index.html#books/';
+
+                    var umbrellaCategory = categoryListings[i].catName;
+
+                    builderString2 += "<table class='category-list'>"
+                        //builderString += "<p> <a class='umbrella-category'" + "href="">" + umbrellaCategory + "</a> </p> ";
+                    builderString2 += `<th> <a class=umbrella-category href='#books/${umbrellaCategory}'> ${umbrellaCategory} </a> </th>`
+                    var subCategoryArray = categoryListings[i].subcatList;
+                    //console.log("subCategoryArray: ", subCategoryArray.length);
+
+                    for (var x = 0; x < subCategoryArray.length; x++) {
+                        var subCategory = subCategoryArray[x];
+                        builderString2 += "<tr class='sub-category'> <td> <a href=''>" + subCategory + "</a><td> </tr>";
+
+                    }
+                    builderString2 += "</table>"
+                    sideMenu.innerHTML = builderString2;
+            }
+          })
         })
     },
 
@@ -79,13 +102,15 @@ var AppRouter = Backbone.Router.extend({
     },
 
     HomePage: function() {
+        contentArea.innerHTML = "";
         var builderString = "";
+
         for (var i = 0; i < categoryListings.length; i++) {
             var baseURL = 'file:///Users/jonathandavidblack/TIY-Frontend-Fall-2016/assignments/22-backbone-router-and-models/index.html#books/';
 
             var umbrellaCategory = categoryListings[i].catName;
             builderString += "<div class='category-list'>"
-            //builderString += "<p> <a class='umbrella-category'" + "href="">" + umbrellaCategory + "</a> </p> ";
+                //builderString += "<p> <a class='umbrella-category'" + "href="">" + umbrellaCategory + "</a> </p> ";
             builderString += `<p> <a class=umbrella-category href='#books/${umbrellaCategory}'> ${umbrellaCategory} </a> </p>`
             var subCategoryArray = categoryListings[i].subcatList;
             console.log("subCategoryArray: ", subCategoryArray.length);

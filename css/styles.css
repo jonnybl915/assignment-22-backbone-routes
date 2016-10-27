@@ -364,6 +364,13 @@ textarea {
   font: inherit;
   /* 2 */ }
 
+.side-menu {
+  width: 25%;
+  alignment: right; }
+
+.container {
+  display: flex; }
+
 * {
   box-sizing: border-box; }
 
@@ -391,7 +398,8 @@ textarea {
   margin-top: 0; }
 
 .content-area {
-  padding-top: 10px; }
+  padding-top: 10px;
+  width: 75%; }
 
 .book-card {
   width: 25%;
